@@ -261,6 +261,48 @@ And here is the final words before i let you go enjoy your birthday in my voice,
 `;
 
 }
+
+ if(section==="future"){
+
+area.innerHTML = `
+
+<button class="backBtn" onclick="goBack()">
+← Back
+</button>
+
+<div class="letterCard">
+
+<h2>⭐ For Future Shambhavi</h2>
+
+<p>
+
+Since this is your birthday, I thought I'd leave one final question.
+
+A year from now, when your next birthday arrives...
+
+what's one thing you'd like to have done, achieved, learned, experienced, or simply be proud of?
+
+</p>
+
+<textarea
+id="futureAnswer"
+rows="6"
+style="width:80%;max-width:600px;border-radius:12px;padding:10px;">
+</textarea>
+
+<br><br>
+
+<button onclick="submitFuture()">
+Send To Future Shambhavi 🌷
+</button>
+
+<div id="futureMessage"></div>
+
+</div>
+
+`;
+
+}   
 }
 
 function showTulip(number){
@@ -391,6 +433,36 @@ function launchPetals(){
         },7000);
 
     }
+
+}
+
+function submitFuture(){
+
+document.getElementById("futureMessage").innerHTML =
+
+`
+
+<div class="messageCard">
+
+<p>
+
+I hope future-you gets to do it.
+
+I hope you're a little closer to your dreams.
+
+I hope you're still curious.
+
+I hope you're still creating.
+
+And I hope this year is kind to you.
+
+🌷
+
+</p>
+
+</div>
+
+`;
 
 }
 
