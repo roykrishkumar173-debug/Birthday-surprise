@@ -140,7 +140,7 @@ area.innerHTML=`
 ← Back
 </button>
 
-<h2>Things I Didn't Say Enough 💌</h2>
+<h2>Things I Don't Say Enough 💌</h2>
 
 <ul>
 
