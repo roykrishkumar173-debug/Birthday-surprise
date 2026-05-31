@@ -26,7 +26,7 @@ function updatePage(){
 
 9:"Yes, today is officially the start of the birth month of one of my favourite people.",
 
-8:"As a future physicist, you should know that time appears to move slower near birthdays.",
+8:"Question of the Day 🌷<br><br>What's a book you've read that you'd recommend to absolutely everyone?",
 
 7:"Scientific Observation: Subject Shambhavi becomes increasingly excited as birthday approaches.",
 
@@ -38,7 +38,7 @@ function updatePage(){
 
 3:"I was going to write something clever today. This is apparently not that message.",
 
-2:"I'm running out of words to describe how excited i am for your birthday.",
+2:"One last question before tomorrow 🌷<br><br>What's one thing you'd like to do before your next birthday?",
 
 1:"Tomorrow is your day 🌷"
 };
@@ -265,6 +265,40 @@ And here is the final words before i let you go enjoy your birthday in my voice,
 
 function showTulip(number){
 
+    if(number===13){
+
+document.getElementById("tulipMessage").innerHTML =
+
+`<div class="messageCard">
+
+<h3>🔬 Physicist Detected</h3>
+
+<p>
+Bonus Fact Unlocked.
+</p>
+
+<p>
+Every atom of carbon in your body was forged inside a star that lived and died long before Earth existed.
+</p>
+
+<p>
+Which means...
+</p>
+
+<p>
+You are technically made of stardust.
+</p>
+
+<p>
+You're welcome. 🌷
+</p>
+
+</div>`;
+
+return;
+
+}
+
 const messages = {
 
 1:"You make me smile more often than you'd probably guess.",
@@ -291,7 +325,7 @@ const messages = {
 
 12:"You have excellent taste in books.",
 
-13:"I love how passionate you get about things.",
+13:"🔬 Physicist Detected. Click again.",
 
 14:"You're one of the most talented people I've ever met.",
 
