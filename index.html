@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>For SS 🌷</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- BEFORE BIRTHDAY -->
+
+    <div id="countdownPage">
+
+        <h1>Something special is waiting for you 🌷</h1>
+
+        <p class="intro">
+            But not yet...
+        </p>
+
+        <p class="intro">
+            I know how much you love birthdays.
+        </p>
+
+        <p class="intro">
+            I know you start counting down long before everyone else does.
+        </p>
+
+        <p class="intro">
+            So this year, I thought I'd count down with you.
+        </p>
+
+        <div id="countdownCard">
+
+            <div id="countdown"></div>
+
+            <p id="dailyMessage"></p>
+
+        </div>
+
+        <div id="lockedSection">
+
+            <h2>Waiting Behind The Countdown</h2>
+
+            <div class="lockedCard">
+                🔒 Birthday Letter
+            </div>
+
+            <div class="lockedCard">
+                🔒 Things I Didn't Say Enough
+            </div>
+
+            <div class="lockedCard">
+                🔒 Tulip Garden
+            </div>
+
+            <div class="lockedCard">
+                🔒 One Last Thing
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BIRTHDAY PAGE -->
+
+    <div id="birthdayContent" style="display:none;">
+
+        <div class="birthdayHero" id="birthdayHero">
+
+            <h1>🌷 Happy Birthday, Shambhavi 🌷</h1>
+
+            <p class="birthdayIntro">
+                You made it.
+            </p>
+
+            <p class="birthdayIntro">
+                For days you've been waiting.
+            </p>
+
+            <p class="birthdayIntro">
+                Checking this website.
+            </p>
+
+            <p class="birthdayIntro">
+                Wondering what was behind the countdown.
+            </p>
+
+            <p class="birthdayIntro">
+                Well...
+            </p>
+
+            <p class="birthdayIntro">
+                Happy Birthday.
+            </p>
+
+            <p class="birthdayIntro">
+                Everything here exists for one reason:
+            </p>
+
+            <p class="birthdayIntro specialText">
+                To remind you how special you are.
+            </p>
+
+        </div>
+
+        <div class="sectionGrid" id="sectionGrid">
+
+            <div class="sectionCard"
+                 onclick="showSection('letter')">
+
+                <h2>📖</h2>
+                <h3>Birthday Letter</h3>
+
+            </div>
+
+            <div class="sectionCard"
+                 onclick="showSection('admire')">
+
+                <h2>💌</h2>
+                <h3>Things I Didn't Say Enough</h3>
+
+            </div>
+
+            <div class="sectionCard"
+                 onclick="showSection('tulips')">
+
+                <h2>🌷</h2>
+                <h3>Tulip Garden</h3>
+
+            </div>
+
+            <div class="sectionCard"
+                 onclick="showSection('voice')">
+
+                <h2>🎙️</h2>
+                <h3>One Last Thing</h3>
+
+            </div>
+
+        </div>
+
+        <div id="contentArea"></div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
