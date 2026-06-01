@@ -24,7 +24,7 @@ function updatePage(){
 
 10:"The countdown has officially begun. Yes, I am enabling your birthday obsession🌷.",
 
-9:"Yes, today is officially the start of the birth month of one of my favourite people.",
+9:"Well, it's finally June. I know you've been waiting for this.",
 
 8:"Question of the Day 🌷<br><br>What's a book you've read that you'd recommend to absolutely everyone?",
 
