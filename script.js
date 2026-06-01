@@ -98,7 +98,7 @@ I spent a long time wondering what I could possibly make for you.
 
 The problem was that none of the usual birthday gifts felt enough.
 
-Because how do you fit someone who loves books, creates beautiful art, writes incredibly well, dreams about physics, and somehow manages to be both incredibly smart and incredibly cute into a single gift?
+Because how do you fit someone who loves books, creates beautiful art, writes incredibly well, dreams about physics, and somehow manages to be both incredibly smart and incredibly creative into a single gift?
 
 You don't.
 
@@ -106,7 +106,7 @@ So instead, I made this.
 
 A small corner of the internet that exists entirely because today is your day.
 
-I hope this year brings you new adventures, new discoveries, new opportunities, and countless reasons to smile.
+I hope this year brings you good memories, new opportunities, countless reasons to smile.
 
 So today, I hope you celebrate properly.
 
@@ -118,11 +118,11 @@ Laugh a lot.
 
 Make good memories.
 
-And selfishly, I hope it brings me many more conversations with you too.
-
 Happy Birthday, Shambhavi.
 
-And thank you for being one of my favorite people. 🌷
+Now go enjoy your day properly.
+
+You deserve it. 🌷
 
 </p>
 
@@ -148,7 +148,7 @@ area.innerHTML=`
 
 <li>I think you'll make an amazing physicist someday.</li>
 
-<li>You somehow manage to be both intelligent and adorable at the same time.</li>
+<li>You care deeply about the things that matter to you.</li>
 
 <li>Your curiosity is one of my favourite things about you.</li>
 
@@ -156,15 +156,17 @@ area.innerHTML=`
 
 <li>I think your future self is going to be very proud of you.</li>
 
-<li>You are one of the few people I can talk to for hours without getting bored.</li>
+<li>I admire how calmly you handle difficult situations and find solutions to problems.</li>
 
 <li>You are the kind of person people remember.</li>
 
 <li>You have a way of making people feel comfortable around you.</li>
 
-<li>I think you're beautiful.</li>
+<li>You're weirdly good at motivating people.</li>
 
-<li>Meeting you has been one of my favorite surprises.</li>
+<li>I am lucky to have a friend like you.</li>
+
+<li>You put a lot of effort into the things you care about.</li>
 
 </ul>
 
@@ -222,9 +224,9 @@ Click them one by one.
 
 }
 
-    if(section==="voice"){
+    if(section==="secret"){
 
-area.innerHTML=`
+area.innerHTML = `
 
 <button class="backBtn" onclick="goBack()">
 ← Back
@@ -232,29 +234,31 @@ area.innerHTML=`
 
 <div class="letterCard">
 
-<h2>🎙️ One Last Thing</h2>
+<h2>🌷 One Last Thing</h2>
 
 <p>
 
-Shambhavi, If you've made it all the way here...
-
-thank you.
-
-Everything on this website was made with one goal:
-
-to make you smile on your birthday.
-
-And here is the final words before i let you go enjoy your birthday in my voice, i know it is not that good , but it is the best you can get(huh because it's my voice)
-
-🌷
+This section is password protected.
 
 </p>
 
-<audio controls>
+<input
+type="password"
+id="secretPassword"
+placeholder="Enter password"
+style="
+padding:10px;
+border-radius:10px;
+width:250px;
+">
 
-<source src="voice.mp3" type="audio/mpeg">
+<br><br>
 
-</audio>
+<button onclick="unlockSecret()">
+Unlock
+</button>
+
+<div id="secretArea"></div>
 
 </div>
 
@@ -343,11 +347,11 @@ return;
 
 const messages = {
 
-1:"You make me smile more often than you'd probably guess.",
+1:"You make people around you smile more often than you'd probably guess.",
 
-2:"I'm really glad you exist.",
+2:"You make people feel heard.",
 
-3:"You're one of my favourite people to talk to.",
+3:"You're capable of doing so many things and that is impressive.",
 
 4:"Your curiosity is one of your best qualities.",
 
@@ -377,11 +381,11 @@ const messages = {
 
 17:"I think you're pretty amazing.",
 
-18:"Getting to know you has been one of my favorite parts of this year.",
+18:"You ask really good questions.",
 
-19:"You became important to me much faster than I expected.",
+19:"You always have something interesting to say.",
 
-20:"🌷 Secret Tulip: Meeting you has been one of my favorite moments."
+20:"🌷 Secret Tulip: You're the kind of friend people are lucky to have."
 };
 
 document.getElementById("tulipMessage").innerHTML =
@@ -463,6 +467,71 @@ And I hope this year is kind to you.
 </div>
 
 `;
+
+}
+
+function unlockSecret(){
+
+const password =
+document.getElementById("secretPassword").value;
+
+if(password==="Somuuu"){
+
+document.getElementById("secretArea").innerHTML = `
+
+<div class="letterCard">
+
+<h2>For Your Eyes Only 🌷</h2>
+
+<p>
+
+This part of the website was always meant just for you.
+
+If you've reached this page, then congratulations.
+
+You've unlocked the final section.
+
+There are some things that didn't quite fit anywhere else on the website.
+
+Things I wanted to tell you.
+
+Things I wanted to thank you for.
+
+And maybe a few things I don't say often enough.
+
+</p>
+
+<br>
+
+<h3>🎙️ Voice Note</h3>
+
+<audio controls>
+
+<source src="voice.mp3" type="audio/mpeg">
+
+</audio>
+
+</div>
+
+`;
+
+}
+
+else{
+
+document.getElementById("secretArea").innerHTML =
+
+`
+
+<p>
+
+Wrong password 🌷
+
+</p>
+
+`;
+
+}
 
 }
 
