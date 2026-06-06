@@ -1,163 +1,1049 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>For SS 🌷</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For SS 🌷</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Bodoni+Moda:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #eef4fd;
+    --parchment: #ddeaf8;
+    --blush: #a8c8f0;
+    --rose: #3a7bd5;
+    --deep-rose: #2558a8;
+    --ink: #0d1f3c;
+    --ink-light: #2e4a72;
+    --gold: #6aaedf;
+    --sage: #7aa4cc;
+    --warm-white: #f4f9ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── BACKGROUND TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(58, 123, 213, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(106, 174, 223, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 60% 10%, rgba(122, 164, 204, 0.1) 0%, transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ── DECORATIVE SVG ELEMENTS ── */
+  .deco-branch {
+    display: block;
+    margin: 0 auto;
+    opacity: 0.35;
+  }
+
+  .section-divider {
+    text-align: center;
+    margin: 28px 0;
+    color: var(--blush);
+    font-size: 1.4rem;
+    letter-spacing: 0.5em;
+    opacity: 0.6;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .display-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .display-title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .serif-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    font-weight: 400;
+    color: var(--ink-light);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--warm-white);
+    border-radius: 4px;
+    padding: 36px 40px;
+    position: relative;
+    border: 1px solid rgba(58, 123, 213, 0.12);
+    box-shadow:
+      0 2px 8px rgba(44, 31, 46, 0.04),
+      0 8px 32px rgba(44, 31, 46, 0.06),
+      inset 0 1px 0 rgba(255,255,255,0.9);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    background: rgba(168, 200, 240, 0.08);
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  /* ── COUNTDOWN PAGE ── */
+  #countdownPage { text-align: center; }
+
+  .countdown-header {
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .countdown-header .display-title {
+    margin-bottom: 28px;
+  }
+
+  .intro-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .intro-lines p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--ink-light);
+    font-style: italic;
+    animation: fadeUp 1s ease both;
+  }
+  .intro-lines p:nth-child(1) { animation-delay: 0.2s; }
+  .intro-lines p:nth-child(2) { animation-delay: 0.35s; }
+  .intro-lines p:nth-child(3) { animation-delay: 0.5s; }
+
+  .countdown-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(58, 123, 213, 0.15);
+    border-radius: 4px;
+    padding: 40px 36px;
+    margin: 0 auto 36px;
+    max-width: 520px;
+    box-shadow:
+      0 2px 8px rgba(13,31,60,0.04),
+      0 12px 40px rgba(58,123,213,0.1);
+    animation: fadeUp 1s ease 0.6s both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .countdown-card::after {
+    content: '🌷';
+    position: absolute;
+    right: -10px; top: -10px;
+    font-size: 80px;
+    opacity: 0.06;
+    transform: rotate(25deg);
+    pointer-events: none;
+  }
+
+  .days-number {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    font-weight: 700;
+    color: var(--rose);
+    line-height: 1;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .days-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  #dailyMessage {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink-light);
+    line-height: 1.75;
+    border-top: 1px solid rgba(58,123,213,0.15);
+    padding-top: 20px;
+    margin-top: 4px;
+  }
+
+  /* ── LOCKED SECTION ── */
+  .locked-section {
+    margin-top: 48px;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+
+  .locked-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.6;
+  }
+
+  .locked-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .locked-item {
+    background: var(--warm-white);
+    border: 1px solid rgba(58,123,213,0.12);
+    border-radius: 4px;
+    padding: 16px 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    opacity: 0.65;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .locked-item .lock-icon { font-size: 0.85rem; opacity: 0.5; }
+
+  /* ── BIRTHDAY HERO ── */
+  #birthdayHero {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease both;
+  }
+
+  #birthdayHero .display-title {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    margin-bottom: 36px;
+  }
+
+  .hero-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-lines p {
+    font-size: 1.3rem;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+
+  .hero-lines p.special-line {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--rose);
+    margin-top: 16px;
+  }
+
+  /* ── SECTION GRID ── */
+  #sectionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .section-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(58,123,213,0.12);
+    border-radius: 4px;
+    padding: 32px 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .section-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(168,200,240,0) 0%, rgba(168,200,240,0.08) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(58,123,213,0.15);
+    border-color: rgba(58,123,213,0.3);
+  }
+
+  .section-card:hover::before { opacity: 1; }
+
+  .card-icon {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+  }
+
+  /* ── CONTENT AREA ── */
+  #contentArea { animation: fadeUp 0.5s ease both; }
+
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--warm-white);
+    border: 1px solid rgba(58,123,213,0.2);
+    padding: 10px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    margin-bottom: 28px;
+  }
+
+  .back-btn:hover {
+    border-color: var(--rose);
+    color: var(--rose);
+    transform: translateX(-2px);
+  }
+
+  /* ── LETTER CARD ── */
+  .letter-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .letter-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(58,123,213,0.12);
+    border-radius: 4px;
+    padding: 52px 56px;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(13,31,60,0.07);
+  }
+
+  .letter-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 48px; right: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blush), transparent);
+  }
+
+  .letter-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--rose);
+    margin-bottom: 32px;
+  }
+
+  .letter-body {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    line-height: 2;
+    color: var(--ink-light);
+  }
+
+  .letter-body p { margin-bottom: 1em; }
+  .letter-body p:last-child { margin-bottom: 0; }
+
+  /* ── ADMIRE LIST ── */
+  .admire-wrap { max-width: 720px; margin: 0 auto; }
+
+  .admire-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--rose);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .admire-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .admire-item {
+    background: var(--warm-white);
+    border: 1px solid rgba(58,123,213,0.1);
+    border-radius: 2px;
+    padding: 18px 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.25s ease;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .admire-item:nth-child(1) { animation-delay: 0.05s; }
+  .admire-item:nth-child(2) { animation-delay: 0.1s; }
+  .admire-item:nth-child(3) { animation-delay: 0.15s; }
+  .admire-item:nth-child(4) { animation-delay: 0.2s; }
+  .admire-item:nth-child(5) { animation-delay: 0.25s; }
+  .admire-item:nth-child(6) { animation-delay: 0.3s; }
+  .admire-item:nth-child(7) { animation-delay: 0.35s; }
+  .admire-item:nth-child(8) { animation-delay: 0.4s; }
+  .admire-item:nth-child(9) { animation-delay: 0.45s; }
+  .admire-item:nth-child(10) { animation-delay: 0.5s; }
+  .admire-item:nth-child(11) { animation-delay: 0.55s; }
+  .admire-item:nth-child(12) { animation-delay: 0.6s; }
+
+  .admire-item:hover {
+    border-color: rgba(58,123,213,0.3);
+    background: rgba(168,200,240,0.06);
+    transform: translateX(6px);
+  }
+
+  .admire-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--blush);
+    flex-shrink: 0;
+  }
+
+  /* ── TULIP GARDEN ── */
+  .garden-wrap { max-width: 720px; margin: 0 auto; text-align: center; }
+
+  .garden-header {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--rose);
+    margin-bottom: 10px;
+  }
+
+  .garden-subtitle {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--ink-light);
+    opacity: 0.7;
+    margin-bottom: 36px;
+  }
+
+  .tulip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .tulip-btn {
+    font-size: 2rem;
+    background: none;
+    border: 1px solid rgba(58,123,213,0.15);
+    border-radius: 4px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--warm-white);
+  }
+
+  .tulip-btn:hover {
+    transform: translateY(-4px) scale(1.1);
+    border-color: var(--blush);
+    box-shadow: 0 8px 20px rgba(58,123,213,0.2);
+  }
+
+  .tulip-btn.revealed {
+    background: rgba(168,200,240,0.15);
+    border-color: rgba(58,123,213,0.3);
+  }
+
+  #tulipMessage {
+    transition: opacity 0.3s ease;
+  }
+
+  .message-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(58,123,213,0.2);
+    border-radius: 4px;
+    padding: 28px 36px;
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(58,123,213,0.1);
+  }
+
+  .message-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--rose);
+    margin-bottom: 14px;
+  }
+
+  .message-card p {
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--ink-light);
+    margin-bottom: 10px;
+  }
+
+  .message-card p:last-child { margin-bottom: 0; }
+
+  /* ── SECRET SECTION ── */
+  .secret-wrap { max-width: 620px; margin: 0 auto; }
+
+  .secret-intro {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-bottom: 28px;
+  }
+
+  .password-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .password-input {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    padding: 12px 18px;
+    border: 1px solid rgba(58,123,213,0.25);
+    border-radius: 2px;
+    background: var(--cream);
+    color: var(--ink);
+    outline: none;
+    flex: 1;
+    min-width: 180px;
+    transition: border-color 0.2s ease;
+  }
+
+  .password-input:focus { border-color: var(--rose); }
+
+  .unlock-btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    background: var(--rose);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .unlock-btn:hover { background: var(--deep-rose); }
+
+  #secretArea {
+    margin-top: 28px;
+  }
+
+  .error-msg {
+    font-style: italic;
+    color: var(--rose);
+    opacity: 0.7;
+    font-size: 1rem;
+    margin-top: 16px;
+  }
+
+  /* ── FUTURE SECTION ── */
+  .future-wrap { max-width: 680px; margin: 0 auto; }
+
+  .future-prompt {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: var(--ink-light);
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+
+  .future-textarea {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    padding: 18px 20px;
+    border: 1px solid rgba(58,123,213,0.2);
+    border-radius: 2px;
+    background: var(--cream);
+    color: var(--ink);
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .future-textarea:focus { border-color: var(--rose); }
+
+  .submit-btn {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--rose);
+    border: 1px solid var(--rose);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .submit-btn:hover {
+    background: var(--rose);
+    color: white;
+  }
+
+  #futureMessage { margin-top: 24px; }
+
+  /* ── AUDIO PLAYER ── */
+  .audio-section {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(58,123,213,0.15);
+  }
+
+  .audio-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--rose);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  audio {
+    width: 100%;
+    border-radius: 2px;
+  }
+
+  /* ── PETALS ── */
+  .petal {
+    position: fixed;
+    top: -60px;
+    font-size: 26px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: petalFall linear forwards;
+  }
+
+  @keyframes petalFall {
+    0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 1; }
+    50% { transform: translateY(55vh) rotate(180deg) translateX(20px); opacity: 0.8; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(-10px); opacity: 0; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .page-wrap { padding: 28px 16px 60px; }
+    .letter-card { padding: 32px 24px; }
+    .card { padding: 24px 20px; }
+    .password-row { flex-direction: column; }
+    .password-input { width: 100%; }
+  }
+</style>
 </head>
-
 <body>
+<div class="page-wrap">
 
-<div class="container">
-
-    <!-- BEFORE BIRTHDAY -->
-
-    <div id="countdownPage">
-
-        <h1>Something special is waiting for you 🌷</h1>
-
-        <p class="intro">
-            But not yet...
-        </p>
-
-        <p class="intro">
-            I know how much you love birthdays.
-        </p>
-
-        <p class="intro">
-            I know you start counting down long before everyone else does.
-        </p>
-
-        <p class="intro">
-            So this year, I thought I'd count down with you.
-        </p>
-
-        <div id="countdownCard">
-
-            <div id="countdown"></div>
-
-            <p id="dailyMessage"></p>
-
-        </div>
-
-        <div id="lockedSection">
-
-            <h2>Waiting Behind The Countdown</h2>
-
-            <div class="lockedCard">
-                🔒 Birthday Letter
-            </div>
-
-            <div class="lockedCard">
-                🔒 Things I Don't Say Enough
-            </div>
-
-            <div class="lockedCard">
-                🔒 Tulip Garden
-            </div>
-
-            <div class="lockedCard">
-                🔒 One Last Thing
-            </div>
-
-            <div class="lockedCard">
-                🔒 For Future Shambhavi
-            </div>
-
-        </div>
-
+  <!-- ═══════════════ COUNTDOWN PAGE ═══════════════ -->
+  <div id="countdownPage">
+    <div class="countdown-header">
+      <h1 class="display-title">Something special<br>is waiting for you <em>🌷</em></h1>
+      <div class="section-divider">· · ·</div>
+      <div class="intro-lines">
+        <p>But not yet...</p>
+        <p>I know how much you love birthdays.</p>
+        <p>I know you start counting down long before everyone else does.</p>
+        <p>So this year, I thought I'd count down with you.</p>
+      </div>
     </div>
 
-    <!-- BIRTHDAY PAGE -->
-
-    <div id="birthdayContent" style="display:none;">
-
-        <div class="birthdayHero" id="birthdayHero">
-
-            <h1>🌷 Happy Birthday, Shambhavi 🌷</h1>
-
-            <p class="birthdayIntro">
-                You made it.
-            </p>
-
-            <p class="birthdayIntro">
-                For days you've been waiting.
-            </p>
-
-            <p class="birthdayIntro">
-                Checking this website.
-            </p>
-
-            <p class="birthdayIntro">
-                Wondering what was behind the countdown.
-            </p>
-
-            <p class="birthdayIntro">
-                Well...
-            </p>
-
-            <p class="birthdayIntro">
-                Happy Birthday.
-            </p>
-
-            <p class="birthdayIntro">
-                Everything here exists for one reason:
-            </p>
-
-            <p class="birthdayIntro specialText">
-                To remind you how special you are.
-            </p>
-
-        </div>
-
-        <div class="sectionGrid" id="sectionGrid">
-
-            <div class="sectionCard"
-                 onclick="showSection('letter')">
-
-                <h2>📖</h2>
-                <h3>Birthday Letter</h3>
-
-            </div>
-
-            <div class="sectionCard"
-                 onclick="showSection('admire')">
-
-                <h2>💌</h2>
-                <h3>Things I Don't Say Enough</h3>
-
-            </div>
-
-            <div class="sectionCard"
-                 onclick="showSection('tulips')">
-
-                <h2>🌷</h2>
-                <h3>Tulip Garden</h3>
-
-            </div>
-
-            <div class="sectionCard"
-                 onclick="showSection('secret')">
-
-                <h2>🎙️</h2>
-                <h3>One Last Thing</h3>
-
-            </div>
-
-            <div class="sectionCard" onclick="showSection('future')">
-                 ⭐
-                 <h3>For Future SS</h3>
-            </div>
-
-        </div>
-
-        <div id="contentArea"></div>
-
+    <div class="countdown-card">
+      <span class="days-number" id="daysNumber">—</span>
+      <span class="days-label">days remaining</span>
+      <div id="dailyMessage"></div>
     </div>
 
+    <div class="locked-section">
+      <h2>Waiting Behind The Countdown</h2>
+      <div class="locked-grid">
+        <div class="locked-item"><span class="lock-icon">🔒</span> Birthday Letter</div>
+        <div class="locked-item"><span class="lock-icon">🔒</span> Things I Don't Say Enough</div>
+        <div class="locked-item"><span class="lock-icon">🔒</span> Tulip Garden</div>
+        <div class="locked-item"><span class="lock-icon">🔒</span> One Last Thing</div>
+        <div class="locked-item"><span class="lock-icon">🔒</span> For Future Shambhavi</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ BIRTHDAY PAGE ═══════════════ -->
+  <div id="birthdayContent" style="display:none;">
+
+    <div class="card" id="birthdayHero">
+      <h1 class="display-title">🌷 Happy Birthday,<br><em>Shambhavi</em> 🌷</h1>
+      <div class="section-divider">· · ·</div>
+      <div class="hero-lines">
+        <p>You made it.</p>
+        <p>For days you've been waiting.</p>
+        <p>Checking this website.</p>
+        <p>Wondering what was behind the countdown.</p>
+        <p>Well...</p>
+        <p>Happy Birthday.</p>
+        <p>Everything here exists for one reason:</p>
+        <p class="special-line">To remind you how special you are.</p>
+      </div>
+    </div>
+
+    <div id="sectionGrid">
+      <div class="section-card" onclick="showSection('letter')">
+        <span class="card-icon">📖</span>
+        <div class="card-title">Birthday Letter</div>
+      </div>
+      <div class="section-card" onclick="showSection('admire')">
+        <span class="card-icon">💌</span>
+        <div class="card-title">Things I Don't Say Enough</div>
+      </div>
+      <div class="section-card" onclick="showSection('tulips')">
+        <span class="card-icon">🌷</span>
+        <div class="card-title">Tulip Garden</div>
+      </div>
+      <div class="section-card" onclick="showSection('secret')">
+        <span class="card-icon">🎙️</span>
+        <div class="card-title">One Last Thing</div>
+      </div>
+      <div class="section-card" onclick="showSection('future')">
+        <span class="card-icon">⭐</span>
+        <div class="card-title">For Future SS</div>
+      </div>
+    </div>
+
+    <div id="contentArea"></div>
+
+  </div>
 </div>
 
-<script src="script.js"></script>
+<script>
+const birthdayDate = new Date("June 10, 2026 00:00:00");
 
+function updatePage() {
+  const now = new Date();
+  const diff = birthdayDate - now;
+  const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+  if (diff > 0) {
+    document.getElementById("daysNumber").textContent = days;
+
+    const messages = {
+      11: "The countdown has begun 🌷",
+      10: "The countdown has officially begun. Yes, I am enabling your birthday obsession 🌷.",
+      9: "Well, it's finally June. I know you've been waiting for this.",
+      8: "Question of the Day 🌷<br><br>What's a book you've read that you'd recommend to absolutely everyone?",
+      7: "Scientific Observation: Subject Shambhavi becomes increasingly excited as birthday approaches.",
+      6: "I was going to write something clever today. This is apparently not that message.",
+      5: "You deserve a really good birthday this year.",
+      4: "Question of the Day 🌷<br><br>What's your favourite birthday memory?",
+      3: "Question of the Day 🌷<br><br>If you had the chance to change one thing from your past, what would it be and why?",
+      2: "One last question before tomorrow 🌷<br><br>What's one thing you'd like to do before your next birthday?",
+      1: "Tomorrow is your day 🌷"
+    };
+
+    document.getElementById("dailyMessage").innerHTML =
+      messages[days] || "The surprise is getting closer...";
+  } else {
+    document.getElementById("countdownPage").style.display = "none";
+    document.getElementById("birthdayContent").style.display = "block";
+
+    if (!window.petalsPlayed) {
+      launchPetals();
+      window.petalsPlayed = true;
+    }
+  }
+}
+
+function showSection(section) {
+  const area = document.getElementById("contentArea");
+  const grid = document.getElementById("sectionGrid");
+  const hero = document.getElementById("birthdayHero");
+
+  grid.style.display = "none";
+  hero.style.display = "none";
+
+  if (section === "letter") {
+    area.innerHTML = `
+      <div class="letter-wrap">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <div class="letter-card">
+          <div class="letter-title">Happy Birthday 🌷</div>
+          <div class="letter-body">
+            <p>I spent a long time wondering what I could possibly make for you.</p>
+            <p>The problem was that none of the usual birthday gifts felt enough.</p>
+            <p>Because how do you fit someone who loves books, creates beautiful art, writes incredibly well, dreams about physics, and somehow manages to be both incredibly smart and incredibly creative into a single gift?</p>
+            <p>You don't.</p>
+            <p>So instead, I made this.</p>
+            <p>A small corner of the internet that exists entirely because today is your day.</p>
+            <p>I hope this year brings you good memories, new opportunities, countless reasons to smile.</p>
+            <p>So today, I hope you celebrate properly.</p>
+            <p>Eat too much cake.</p>
+            <p>Take too many photos.</p>
+            <p>Laugh a lot.</p>
+            <p>Make good memories.</p>
+            <p>Happy Birthday, Shambhavi.</p>
+            <p>Now go enjoy your day properly.</p>
+            <p>You deserve it. 🌷</p>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  if (section === "admire") {
+    const items = [
+      "You're one of the smartest people I've ever met.",
+      "I think you'll make an amazing physicist someday.",
+      "You care deeply about the things that matter to you.",
+      "Your curiosity is one of my favourite things about you.",
+      "I don't think you realize how memorable you are.",
+      "I think your future self is going to be very proud of you.",
+      "I admire how calmly you handle difficult situations and find solutions to problems.",
+      "You are the kind of person people remember.",
+      "You have a way of making people feel comfortable around you.",
+      "You're weirdly good at motivating people.",
+      "I am lucky to have a friend like you.",
+      "You put a lot of effort into the things you care about."
+    ];
+
+    area.innerHTML = `
+      <div class="admire-wrap">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <div class="admire-header">Things I Don't Say Enough 💌</div>
+        <div class="admire-list">
+          ${items.map(i => `
+            <div class="admire-item">
+              <span class="admire-dot"></span>
+              ${i}
+            </div>`).join("")}
+        </div>
+      </div>`;
+  }
+
+  if (section === "tulips") {
+    area.innerHTML = `
+      <div class="garden-wrap">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <div class="garden-header">🌷 Tulip Garden 🌷</div>
+        <p class="garden-subtitle">Every tulip hides a small message. Click them one by one.</p>
+        <div class="tulip-grid" id="tulipGrid">
+          ${Array.from({length: 20}, (_, i) => `
+            <button class="tulip-btn" id="tulip${i+1}" onclick="showTulip(${i+1})">🌷</button>
+          `).join("")}
+        </div>
+        <div id="tulipMessage"></div>
+      </div>`;
+  }
+
+  if (section === "secret") {
+    area.innerHTML = `
+      <div class="secret-wrap">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <div class="card">
+          <div class="letter-title">🌷 One Last Thing</div>
+          <p class="secret-intro">This section is password protected.</p>
+          <div class="password-row">
+            <input type="password" id="secretPassword" placeholder="Enter password" class="password-input">
+            <button onclick="unlockSecret()" class="unlock-btn">Unlock</button>
+          </div>
+          <div id="secretArea"></div>
+        </div>
+      </div>`;
+  }
+
+  if (section === "future") {
+    area.innerHTML = `
+      <div class="future-wrap">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <div class="card">
+          <div class="letter-title">⭐ For Future Shambhavi</div>
+          <p class="future-prompt">
+            Since this is your birthday, I thought I'd leave one final question.<br><br>
+            A year from now, when your next birthday arrives...<br>
+            what's one thing you'd like to have done, achieved, learned, experienced, or simply be proud of?
+          </p>
+          <textarea id="futureAnswer" rows="6" class="future-textarea" placeholder="Write here..."></textarea>
+          <br>
+          <button onclick="submitFuture()" class="submit-btn">Send To Future Shambhavi 🌷</button>
+          <div id="futureMessage"></div>
+        </div>
+      </div>`;
+  }
+}
+
+function showTulip(number) {
+  document.getElementById(`tulip${number}`)?.classList.add("revealed");
+
+  if (number === 13) {
+    document.getElementById("tulipMessage").innerHTML = `
+      <div class="message-card">
+        <h3>🔬 Physicist Detected</h3>
+        <p>Bonus Fact Unlocked.</p>
+        <p>Every atom of carbon in your body was forged inside a star that lived and died long before Earth existed.</p>
+        <p>Which means...</p>
+        <p>You are technically made of stardust.</p>
+        <p>You're welcome. 🌷</p>
+      </div>`;
+    return;
+  }
+
+  const messages = {
+    1: "You make people around you smile more often than you'd probably guess.",
+    2: "You make people feel heard.",
+    3: "You're capable of doing so many things and that is impressive.",
+    4: "Your curiosity is one of your best qualities.",
+    5: "I think you'll do amazing things someday.",
+    6: "You make conversations feel effortless.",
+    7: "You are much more talented than you realize.",
+    8: "I admire how seriously you take your dreams.",
+    9: "The world needs more people like you.",
+    10: "Your future self is going to be proud of you.",
+    11: "You're the kind of person people remember.",
+    12: "You have excellent taste in books.",
+    14: "You're one of the most talented people I've ever met.",
+    15: "You have a way of making people feel comfortable around you.",
+    16: "I genuinely admire your creativity.",
+    17: "I think you're pretty amazing.",
+    18: "You ask really good questions.",
+    19: "You always have something interesting to say.",
+    20: "🌷 Secret Tulip: You're the kind of friend people are lucky to have."
+  };
+
+  document.getElementById("tulipMessage").innerHTML =
+    `<div class="message-card"><p>${messages[number]}</p></div>`;
+}
+
+function goBack() {
+  const area = document.getElementById("contentArea");
+  const grid = document.getElementById("sectionGrid");
+  const hero = document.getElementById("birthdayHero");
+
+  area.innerHTML = "";
+  grid.style.display = "grid";
+  hero.style.display = "block";
+}
+
+function launchPetals() {
+  for (let i = 0; i < 35; i++) {
+    setTimeout(() => {
+      const petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.innerHTML = "🌷";
+      petal.style.left = Math.random() * 100 + "vw";
+      petal.style.animationDuration = (3.5 + Math.random() * 4) + "s";
+      petal.style.fontSize = (18 + Math.random() * 18) + "px";
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 8000);
+    }, i * 120);
+  }
+}
+
+function submitFuture() {
+  document.getElementById("futureMessage").innerHTML = `
+    <div class="message-card" style="margin-top:20px;">
+      <p>I hope future-you gets to do it.</p>
+      <p>I hope you're a little closer to your dreams.</p>
+      <p>I hope you're still curious.</p>
+      <p>I hope you're still creating.</p>
+      <p>And I hope this year is kind to you. 🌷</p>
+    </div>`;
+}
+
+function unlockSecret() {
+  const pw = document.getElementById("secretPassword").value;
+
+  if (pw === "Somuuu") {
+    document.getElementById("secretArea").innerHTML = `
+      <div style="margin-top:28px; padding-top:24px; border-top:1px solid rgba(58,123,213,0.15);">
+        <div class="letter-title" style="margin-bottom:18px;">For Your Eyes Only 🌷</div>
+        <div class="letter-body">
+          <p>Happy birthday Shambhavi aka Somu aka my cute little rabit, i hope this birthday will bring you joy, positivity and lots of gifts.</p>
+          <p>Shambhavi i am lucky to have a girl like you in my life and i hope and pray to have you with me forever.</p>
+          <p>Shambhavi i know i have said sorry to you so many times and made countless mistakes which you forgive me for and i am grateful for it.</p>
+          <p>But i am gonna improve yarr. i am gonna try to not make those mistakes again and on your next birthday i hope you will get a improved Krishna.</p>
+        </div>
+        <div class="audio-section">
+          <div class="audio-label">🎙️ Voice Note</div>
+          <audio controls>
+            <source src="voice.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>`;
+  } else {
+    document.getElementById("secretArea").innerHTML =
+      `<p class="error-msg">Wrong password 🌷</p>`;
+  }
+}
+
+updatePage();
+setInterval(updatePage, 1000);
+</script>
 </body>
 </html>
