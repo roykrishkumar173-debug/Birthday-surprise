@@ -34,9 +34,9 @@ function updatePage(){
 
 5:"You deserve a really good birthday this year.",
 
-4:"I was trying to think of what to write today and ended up thinking about how excited you probably are already.",
+4:"Question of the Day 🌷<br><br>What's your favourite birthday memory?",
 
-3:"I was going to write something clever today. This is apparently not that message.",
+3:"Question of the Day 🌷<br><br>If you had the chance to change one thing from your past, what would it be and why?",
 
 2:"One last question before tomorrow 🌷<br><br>What's one thing you'd like to do before your next birthday?",
 
@@ -485,19 +485,16 @@ document.getElementById("secretArea").innerHTML = `
 
 <p>
 
-This part of the website was always meant just for you.
+Happy birthday Shambhavi aka Somu aka my cute little rabit, i hope this birthday will bring you joy, positivity and lots of gifts.
 
-If you've reached this page, then congratulations.
+Shambhavi i am lucky to have a girl like you in my life and i hope and pray to have you with me forever. 
 
-You've unlocked the final section.
+Shambhavi i know i have said sorry to you so many times and made countless mistakes which you forgive me for and i am grateful for it.
 
-There are some things that didn't quite fit anywhere else on the website.
+But i am gonna improve yarr. i am gonna try to not make those mistakes again and on your next birthday i hope you will get a improved Krishna.
 
-Things I wanted to tell you.
 
-Things I wanted to thank you for.
 
-And maybe a few things I don't say often enough.
 
 </p>
 
