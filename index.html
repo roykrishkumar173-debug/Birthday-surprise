@@ -1005,15 +1005,57 @@ function launchPetals() {
   }
 }
 
-function submitFuture() {
-  document.getElementById("futureMessage").innerHTML = `
-    <div class="message-card" style="margin-top:20px;">
-      <p>I hope future-you gets to do it.</p>
-      <p>I hope you're a little closer to your dreams.</p>
-      <p>I hope you're still curious.</p>
-      <p>I hope you're still creating.</p>
-      <p>And I hope this year is kind to you. 🌷</p>
-    </div>`;
+async function submitFuture() {
+
+  const answer =
+  document.getElementById("futureAnswer").value;
+
+  if (!answer.trim()) {
+    alert("Future SS needs a message first 🌷");
+    return;
+  }
+
+  try {
+
+    await fetch(
+      "https://formspree.io/f/xaqzbjgk",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: answer
+        })
+      }
+    );
+
+    document.querySelector(".future-textarea")
+      .style.display = "none";
+
+    document.querySelector(".submit-btn")
+      .style.display = "none";
+
+    document.getElementById("futureMessage").innerHTML = `
+      <div class="message-card" style="margin-top:20px;">
+        <p>🌷 Message Sent To Future Shambhavi</p>
+        <br>
+        <p>${answer}</p>
+        <br>
+        <p>I hope future-you gets to do it.</p>
+        <p>I hope you're a little closer to your dreams.</p>
+        <p>And I hope this year is kind to you. 🌷</p>
+      </div>
+    `;
+
+  } catch (error) {
+
+    alert(
+      "Something went wrong. Please try again."
+    );
+
+  }
+
 }
 
 function unlockSecret() {
